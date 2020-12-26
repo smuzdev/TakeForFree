@@ -1,9 +1,10 @@
-package com.smuzdev.takeforfree;
+package com.smuzdev.takeforfree.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.smuzdev.takeforfree.R;
 import com.smuzdev.takeforfree.fragments.LoginFragment;
 
 public class LoginActivity extends AppCompatActivity {

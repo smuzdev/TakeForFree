@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivImage2"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="@string/noImage"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_image" />
+
+        <TextView
+            android:id="@+id/txtThingName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="@string/thingName"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtThingDiscoveryDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thingDiscoveryDate"
+            android:textAlignment="center"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/txtThingDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/thingDescription"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/txtThingDiscoveryPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/thingDiscoveryPlace"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/txtThingPickupPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/thingPickupPoint"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="@string/userName"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/txtUserPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="phone"
+            android:padding="10dp"
+            android:text="@string/userPhone"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/txtUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
+            android:padding="10dp"
+            android:text="@string/userEmail"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/red"
+                android:text="@string/deleteThing"
+                android:textColor="#ffffff"
+                android:textSize="19sp" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="20dp"
+                android:autoLink="phone"
+                android:backgroundTint="@color/red"
+                android:text="@string/updateThing"
+                android:textColor="#ffffff"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
