@@ -190,7 +190,11 @@ public class UploadFragment extends Fragment {
 
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "New thing uploaded!", Toast.LENGTH_LONG).show();
-                    getActivity().finish();
+                    ThingsListFragment thingsListFragment = new ThingsListFragment();
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.mainFragment, thingsListFragment)
+                            .addToBackStack(null)
+                            .commit();
                 }
 
             }

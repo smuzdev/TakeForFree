@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -37,11 +38,19 @@ public class MainActivity extends AppCompatActivity /*implements Postman*/ {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("CheckLC", "onCreateActivity");
 
         thingsListFragment = new ThingsListFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.mainFragment, thingsListFragment)
+                .add(R.id.mainFragment, thingsListFragment)
+                .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("CheckLC", "onResumeActivity");
     }
 
     @Override
@@ -49,6 +58,7 @@ public class MainActivity extends AppCompatActivity /*implements Postman*/ {
         super.onStart();
 //        mRecyclerView = findViewById(R.id.recyclerView);
 //        mRecyclerView.setLayoutManager(gridLayoutManager);
+        Log.i("CheckLC", "onStartActivity");
 
         //Drawer
         // <---- ----->
@@ -83,7 +93,8 @@ public class MainActivity extends AppCompatActivity /*implements Postman*/ {
                     case R.id.upload_thing:
                         UploadFragment uploadFragment = new UploadFragment();
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.mainFragment, uploadFragment)
+                                .add(R.id.mainFragment, uploadFragment)
+                                .addToBackStack(null)
                                 .commit();
                         break;
                 }

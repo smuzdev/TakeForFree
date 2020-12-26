@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,25 +42,27 @@ public class ThingsListFragment extends Fragment /*implements Postman*/ {
     List<Thing> thingList;
     ProgressDialog progressDialog;
     EditText txt_search;
+    GridLayoutManager gridLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_things_list, container, false);
 
-//        GridLayoutManager fragmentGridLayoutManager = new GridLayoutManager(getActivity(), 1);
-//        ((Postman) getActivity()).fragmentMail(fragmentGridLayoutManager);
+        Log.i("CheckLC", "onCreateView");
+//      ((Postman) getActivity()).fragmentMail(fragmentGridLayoutManager);
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
         txt_search = view.findViewById(R.id.txt_searchText);
 
+        gridLayoutManager = new GridLayoutManager(getActivity(), 1);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
+
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading items...");
-
-
         thingList = new ArrayList<>();
 
-        final Adapter myAdapter = new Adapter(getActivity(), thingList);
+        final Adapter myAdapter = new Adapter(getContext(), thingList);
         mRecyclerView.setAdapter(myAdapter);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Things");
@@ -127,6 +130,9 @@ public class ThingsListFragment extends Fragment /*implements Postman*/ {
     @Override
     public void onResume() {
         super.onResume();
+        Log.i("CheckLC", "onResume");
+        gridLayoutManager = new GridLayoutManager(getActivity(), 1);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
 //    @Override
