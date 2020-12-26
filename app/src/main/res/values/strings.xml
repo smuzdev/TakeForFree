@@ -1,3 +1,50 @@
 <resources>
     <string name="app_name">TakeForFree</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="search">Search</string>
+    <string name="noImage">No Image</string>
+    <string name="Image">Photo of thing</string>
+
+    <!--Login&Registration-->
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="noAccount">No account yet? Create one</string>
+    <string name="haveAccount">Already a member? Login</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+
+    <!--Detail View-->
+    <string name="thingName">Thing Name</string>
+    <string name="thingDescription">Thing Description</string>
+    <string name="thingDiscoveryDate">Unspecified</string>
+    <string name="thingDiscoveryPlace">Thing Discovery Place</string>
+    <string name="thingPickupPoint">Thing Pickup Point</string>
+    <string name="userPhone">Phone</string>
+    <string name="contacts">Contacts</string>
+
+    <!--Buttons-->
+    <string name="selectImage">Select Image</string>
+    <string name="uploadThing">Upload</string>
+    <string name="updateThing">Update</string>
+    <string name="deleteThing">Delete</string>
+    <string name="selectDate">Select Date</string>
+    <string name="addNewThing">Add new</string>
+
+    <!--User-->
+    <string name="userName">User Name</string>
+    <string name="userEmail">User Email</string>
+
+    <!--Context Menu-->
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
