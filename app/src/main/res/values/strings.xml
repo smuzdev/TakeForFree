@@ -27,8 +27,7 @@
     <!--Detail View-->
     <string name="thingName">Thing Name</string>
     <string name="thingDescription">Thing Description</string>
-    <string name="thingDiscoveryDate">Unspecified</string>
-    <string name="thingDiscoveryPlace">Thing Discovery Place</string>
+    <string name="thingUseDuration">Thing Use Duration</string>
     <string name="thingPickupPoint">Thing Pickup Point</string>
     <string name="userPhone">Phone</string>
     <string name="contacts">Contacts</string>

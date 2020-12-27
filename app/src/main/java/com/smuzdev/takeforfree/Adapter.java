@@ -56,7 +56,7 @@ public class Adapter extends RecyclerView.Adapter<ThingViewHolder> {
 
         thingViewHolder.mThingTitle.setText(thingList.get(position).getThingName());
         thingViewHolder.mhThingDescription.setText(thingList.get(position).getThingDescription());
-        thingViewHolder.mThingDiscoveryPlace.setText(thingList.get(position).getThingDiscoveryPlace());
+        thingViewHolder.mThingUseDuration.setText(thingList.get(position).getThingUseDuration());
 
         thingViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,9 +66,9 @@ public class Adapter extends RecyclerView.Adapter<ThingViewHolder> {
 
                 bundle.putString("ThingName", thingList.get(thingViewHolder.getAdapterPosition()).getThingName());
                 bundle.putString("ThingDescription", thingList.get(thingViewHolder.getAdapterPosition()).getThingDescription());
-                bundle.putString("ThingDiscoveryDate", thingList.get(thingViewHolder.getAdapterPosition()).getThingDiscoveryDate());
+                bundle.putString("ThingPublicationDate", thingList.get(thingViewHolder.getAdapterPosition()).getThingPublicationDate());
                 bundle.putString("ThingImage", thingList.get(thingViewHolder.getAdapterPosition()).getThingImage());
-                bundle.putString("ThingDiscoveryPlace", thingList.get(thingViewHolder.getAdapterPosition()).getThingDiscoveryPlace());
+                bundle.putString("ThingUseDuration", thingList.get(thingViewHolder.getAdapterPosition()).getThingUseDuration());
                 bundle.putString("ThingPickupPoint", thingList.get(thingViewHolder.getAdapterPosition()).getThingPickupPoint());
                 bundle.putString("KeyValue", thingList.get(thingViewHolder.getAdapterPosition()).getKey());
                 bundle.putString("UserName", thingList.get(thingViewHolder.getAdapterPosition()).getUserName());
@@ -123,7 +123,7 @@ public class Adapter extends RecyclerView.Adapter<ThingViewHolder> {
 class ThingViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
     ImageView imageView;
-    TextView mThingTitle, mhThingDescription, mThingDiscoveryPlace;
+    TextView mThingTitle, mhThingDescription, mThingUseDuration;
     CardView mCardView;
 
     public ThingViewHolder(@NonNull View itemView) {
@@ -132,7 +132,7 @@ class ThingViewHolder extends RecyclerView.ViewHolder implements View.OnCreateCo
         imageView = itemView.findViewById(R.id.ivThingImage);
         mThingTitle = itemView.findViewById(R.id.tvThingName);
         mhThingDescription = itemView.findViewById(R.id.tvThingDescription);
-        mThingDiscoveryPlace = itemView.findViewById(R.id.tvThingDiscoveryPlace);
+        mThingUseDuration = itemView.findViewById(R.id.tvThingUseDuration);
         mCardView = itemView.findViewById(R.id.myCardView);
         mCardView.setOnCreateContextMenuListener(this);
     }

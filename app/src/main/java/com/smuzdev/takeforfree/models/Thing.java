@@ -4,22 +4,22 @@ public class Thing {
 
     private String thingName;
     private String thingDescription;
-    private String thingDiscoveryDate;
+    private String thingPublicationDate;
     private String thingImage;
-    private String thingDiscoveryPlace;
+    private String thingUseDuration;
     private String thingPickupPoint;
     private String key;
     private String userName;
     private String userEmail;
     private String userPhone;
 
-    public Thing(String thingName, String thingDescription, String thingDiscoveryDate,
-                 String thingDiscoveryPlace, String thingPickupPoint, String thingImage,
+    public Thing(String thingName, String thingDescription, String thingPublicationDate,
+                 String thingUseDuration, String thingPickupPoint, String thingImage,
                  String userName, String userEmail, String userPhone) {
         this.thingName = thingName;
         this.thingDescription = thingDescription;
-        this.thingDiscoveryDate = thingDiscoveryDate;
-        this.thingDiscoveryPlace = thingDiscoveryPlace;
+        this.thingPublicationDate = thingPublicationDate;
+        this.thingUseDuration = thingUseDuration;
         this.thingPickupPoint = thingPickupPoint;
         this.thingImage = thingImage;
         this.userName = userName;
@@ -39,12 +39,12 @@ public class Thing {
         return thingDescription;
     }
 
-    public String getThingDiscoveryDate() {
-        return thingDiscoveryDate;
+    public String getThingPublicationDate() {
+        return thingPublicationDate;
     }
 
-    public String getThingDiscoveryPlace() {
-        return thingDiscoveryPlace;
+    public String getThingUseDuration() {
+        return thingUseDuration;
     }
 
     public String getThingPickupPoint() {

@@ -46,14 +46,14 @@ public class UpdateFragment extends Fragment {
 
     ImageView thingImage;
     Uri uri;
-    EditText txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace,
+    EditText txt_thingName, txt_thingDescription, txt_thingUseDuration,
             txt_thingPickupPoint;
-    String txt_thingDiscoveryDate;
+    String txt_thingPublicationDate;
     String imageUrl;
     String key, oldImageUrl;
     DatabaseReference databaseReference;
     StorageReference storageReference;
-    String thingName, thingDescription, thingDiscoveryDate, thingDiscoveryPlace,
+    String thingName, thingDescription, thingPublicationDate, thingUseDuration,
             thingPickupPoint, userName, userPhone, userEmail;
     MaterialButton updateButton, selectImageButton;
 
@@ -66,7 +66,7 @@ public class UpdateFragment extends Fragment {
         thingImage = view.findViewById(R.id.iv_thingImage);
         txt_thingName = view.findViewById(R.id.txtThingName);
         txt_thingDescription = view.findViewById(R.id.txtThingDescription);
-        txt_thingDiscoveryPlace = view.findViewById(R.id.txtThingDiscoveryPlace);
+        txt_thingUseDuration = view.findViewById(R.id.txtThingUseDuration);
         txt_thingPickupPoint = view.findViewById(R.id.txtThingPickupPoint);
         selectImageButton = view.findViewById(R.id.select_image_button);
         updateButton = view.findViewById(R.id.update_button);
@@ -78,8 +78,8 @@ public class UpdateFragment extends Fragment {
 
             txt_thingName.setText(bundle.getString("thingNameKey"));
             txt_thingDescription.setText(bundle.getString("thingDescriptionKey"));
-            txt_thingDiscoveryDate = bundle.getString("thingDiscoveryDateKey");
-            txt_thingDiscoveryPlace.setText(bundle.getString("thingDiscoveryPlaceKey"));
+            txt_thingPublicationDate = bundle.getString("thingPublicationDateKey");
+            txt_thingUseDuration.setText(bundle.getString("thingUseDurationKey"));
             txt_thingPickupPoint.setText(bundle.getString("thingPickupPointKey"));
             userName = bundle.getString("userNameKey");
             userPhone = bundle.getString("userPhoneKey");
@@ -100,7 +100,7 @@ public class UpdateFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        EditText[] editTexts = {txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace, txt_thingPickupPoint};
+        EditText[] editTexts = {txt_thingName, txt_thingDescription, txt_thingUseDuration, txt_thingPickupPoint};
         CustomTextWatcher textWatcher = new CustomTextWatcher(editTexts, updateButton);
         for (EditText editText : editTexts) {
             editText.addTextChangedListener(textWatcher);
@@ -120,8 +120,8 @@ public class UpdateFragment extends Fragment {
             public void onClick(View v) {
                 thingName = txt_thingName.getText().toString().trim();
                 thingDescription = txt_thingDescription.getText().toString().trim();
-                thingDiscoveryDate = txt_thingDiscoveryDate;
-                thingDiscoveryPlace = txt_thingDiscoveryPlace.getText().toString().trim();
+                thingPublicationDate = txt_thingPublicationDate;
+                thingUseDuration = txt_thingUseDuration.getText().toString().trim();
                 thingPickupPoint = txt_thingPickupPoint.getText().toString().trim();
 
                 final ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -169,8 +169,8 @@ public class UpdateFragment extends Fragment {
         Thing thing = new Thing(
                 thingName,
                 thingDescription,
-                thingDiscoveryDate,
-                thingDiscoveryPlace,
+                thingPublicationDate,
+                thingUseDuration,
                 thingPickupPoint,
                 imageUrl,
                 userName,

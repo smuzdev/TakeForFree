@@ -56,8 +56,8 @@ public class UploadFragment extends Fragment {
     User user;
     FirebaseUser FB_user;
     Button selectImageButton;
-    String txt_thingDiscoveryDate;
-    EditText txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace, txt_thingPickupPoint;
+    String txt_thingPublicationDate;
+    EditText txt_thingName, txt_thingDescription, txt_thingUseDuration, txt_thingPickupPoint;
     ImageView thingImage;
     String imageUrl, userName, userEmail, userPhone;
     MaterialButton uploadButton;
@@ -71,7 +71,7 @@ public class UploadFragment extends Fragment {
         thingImage = view.findViewById(R.id.iv_thingImage);
         txt_thingName = view.findViewById(R.id.txtThingName);
         txt_thingDescription = view.findViewById(R.id.txtThingDescription);
-        txt_thingDiscoveryPlace = view.findViewById(R.id.txtThingDiscoveryPlace);
+        txt_thingUseDuration = view.findViewById(R.id.txtThingUseDuration);
         txt_thingPickupPoint = view.findViewById(R.id.txtThingPickupPoint);
         selectImageButton = view.findViewById(R.id.select_image_button);
         uploadButton = view.findViewById(R.id.uploadButton);
@@ -101,7 +101,7 @@ public class UploadFragment extends Fragment {
             }
         });
 
-        EditText[] editTexts = {txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace, txt_thingPickupPoint};
+        EditText[] editTexts = {txt_thingName, txt_thingDescription, txt_thingUseDuration, txt_thingPickupPoint};
         CustomTextWatcher textWatcher = new CustomTextWatcher(editTexts, uploadButton);
         for (EditText editText : editTexts) {
             editText.addTextChangedListener(textWatcher);
@@ -172,13 +172,13 @@ public class UploadFragment extends Fragment {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
-        txt_thingDiscoveryDate = dtf.format(localDate);
+        txt_thingPublicationDate = dtf.format(localDate);
 
         Thing thing = new Thing(
                 txt_thingName.getText().toString(),
                 txt_thingDescription.getText().toString(),
-                txt_thingDiscoveryDate,
-                txt_thingDiscoveryPlace.getText().toString(),
+                txt_thingPublicationDate,
+                txt_thingUseDuration.getText().toString(),
                 txt_thingPickupPoint.getText().toString(),
                 imageUrl,
                 userName,

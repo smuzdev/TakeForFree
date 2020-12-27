@@ -33,10 +33,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtThingDiscoveryDate"
+            android:id="@+id/txtThingPublicationDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/thingDiscoveryDate"
+            android:text="@string/thingUseDuration"
             android:textAlignment="center"
             android:textSize="19sp" />
 
@@ -50,11 +50,11 @@
             android:textSize="19sp" />
 
         <TextView
-            android:id="@+id/txtThingDiscoveryPlace"
+            android:id="@+id/txtThingUseDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/thingDiscoveryPlace"
+            android:text="@string/thingUseDuration"
             android:textColor="@color/black"
             android:textSize="19sp" />
 

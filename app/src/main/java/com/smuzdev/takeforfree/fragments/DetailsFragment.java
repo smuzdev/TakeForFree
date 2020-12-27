@@ -25,7 +25,7 @@ import com.smuzdev.takeforfree.activities.MainActivity;
 
 public class DetailsFragment extends Fragment {
 
-    TextView thingName, thingDescription, thingDiscoveryDate, thingDiscoveryPlace,
+    TextView thingName, thingDescription, thingPublicationDate, thingUseDuration,
             thingPickupPoint, userName, userEmail, userPhone;
     Button btnUpdate, btnDelete;
     ImageView thingImage;
@@ -40,8 +40,8 @@ public class DetailsFragment extends Fragment {
 
         thingName = view.findViewById(R.id.txtThingName);
         thingDescription = view.findViewById(R.id.txtThingDescription);
-        thingDiscoveryDate = view.findViewById(R.id.txtThingDiscoveryDate);
-        thingDiscoveryPlace = view.findViewById(R.id.txtThingDiscoveryPlace);
+        thingPublicationDate = view.findViewById(R.id.txtThingPublicationDate);
+        thingUseDuration = view.findViewById(R.id.txtThingUseDuration);
         thingPickupPoint = view.findViewById(R.id.txtThingPickupPoint);
         userName = view.findViewById(R.id.txtUserName);
         userEmail = view.findViewById(R.id.txtUserEmail);
@@ -56,8 +56,8 @@ public class DetailsFragment extends Fragment {
 
             thingName.setText(mBundle.getString("ThingName"));
             thingDescription.setText(mBundle.getString("ThingDescription"));
-            thingDiscoveryDate.setText(mBundle.getString("ThingDiscoveryDate"));
-            thingDiscoveryPlace.setText(mBundle.getString("ThingDiscoveryPlace"));
+            thingPublicationDate.setText(mBundle.getString("ThingPublicationDate"));
+            thingUseDuration.setText(mBundle.getString("ThingUseDuration"));
             thingPickupPoint.setText(mBundle.getString("ThingPickupPoint"));
             userName.setText(mBundle.getString("UserName"));
             userPhone.setText(mBundle.getString("UserEmail"));
@@ -83,8 +83,8 @@ public class DetailsFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("thingNameKey", thingName.getText().toString());
                 bundle.putString("thingDescriptionKey", thingDescription.getText().toString());
-                bundle.putString("thingDiscoveryDateKey", thingDiscoveryDate.getText().toString());
-                bundle.putString("thingDiscoveryPlaceKey", thingDiscoveryPlace.getText().toString());
+                bundle.putString("thingPublicationDateKey", thingPublicationDate.getText().toString());
+                bundle.putString("thingUseDurationKey", thingUseDuration.getText().toString());
                 bundle.putString("thingPickupPointKey", thingPickupPoint.getText().toString());
                 bundle.putString("userNameKey", userName.getText().toString());
                 bundle.putString("userPhoneKey", userPhone.getText().toString());

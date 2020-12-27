@@ -142,8 +142,8 @@ public class ThingsListFragment extends Fragment /*implements Postman*/ {
                 Bundle bundle = new Bundle();
                 bundle.putString("thingNameKey", thingList.get(item.getGroupId()).getThingName());
                 bundle.putString("thingDescriptionKey", thingList.get(item.getGroupId()).getThingDescription());
-                bundle.putString("thingDiscoveryDateKey", thingList.get(item.getGroupId()).getThingDiscoveryDate());
-                bundle.putString("thingDiscoveryPlaceKey", thingList.get(item.getGroupId()).getThingDiscoveryPlace());
+                bundle.putString("thingPublicationDateKey", thingList.get(item.getGroupId()).getThingPublicationDate());
+                bundle.putString("thingUseDurationKey", thingList.get(item.getGroupId()).getThingUseDuration());
                 bundle.putString("thingPickupPointKey", thingList.get(item.getGroupId()).getThingPickupPoint());
                 bundle.putString("userNameKey", thingList.get(item.getGroupId()).getUserName());
                 bundle.putString("userPhoneKey", thingList.get(item.getGroupId()).getUserPhone());
