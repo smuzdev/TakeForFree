@@ -135,53 +135,61 @@ public class ThingsListFragment extends Fragment /*implements Postman*/ {
         mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
-//    @Override
-//    public boolean onContextItemSelected(@NonNull final MenuItem item) {
-//        switch (item.getItemId()) {
-//            case 1:
-//                startActivity(new Intent(getActivity(), UpdateActivity.class)
-//                        .putExtra("thingNameKey", thingList.get(item.getGroupId()).getThingName())
-//                        .putExtra("thingDescriptionKey", thingList.get(item.getGroupId()).getThingDescription())
-//                        .putExtra("thingDiscoveryDateKey", thingList.get(item.getGroupId()).getThingDiscoveryDate())
-//                        .putExtra("thingDiscoveryPlaceKey", thingList.get(item.getGroupId()).getThingDiscoveryPlace())
-//                        .putExtra("thingPickupPointKey", thingList.get(item.getGroupId()).getThingPickupPoint())
-//                        .putExtra("userNameKey", thingList.get(item.getGroupId()).getUserName())
-//                        .putExtra("userPhoneKey", thingList.get(item.getGroupId()).getUserPhone())
-//                        .putExtra("userEmailKey", thingList.get(item.getGroupId()).getUserEmail())
-//                        .putExtra("oldImageUrl", thingList.get(item.getGroupId()).getThingImage())
-//                        .putExtra("key", thingList.get(item.getGroupId()).getKey())
-//                );
-//                return true;
-//            case 2:
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                builder
-//                        .setTitle("Delete")
-//                        .setMessage("Do you want to delete item?")
-//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Things");
-//                                FirebaseStorage storage = FirebaseStorage.getInstance();
-//                                StorageReference storageReference = storage.getReferenceFromUrl(thingList.get(item.getGroupId()).getThingImage());
-//
-//                                storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//                                        reference.child(thingList.get(item.getGroupId()).getKey()).removeValue();
-//                                        Toast.makeText(getActivity(), "Thing deleted", Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(getActivity(), MainActivity.class));
-//                                        getActivity().finish();
-//                                    }
-//                                });
-//                            }
-//                        })
-//                        .setNegativeButton("Cancel", null).create().show();
-//                return true;
-//            default:
-//                super.onContextItemSelected(item);
-//        }
-//        return false;
-//    }
+    @Override
+    public boolean onContextItemSelected(@NonNull final MenuItem item) {
+        switch (item.getItemId()) {
+            case 1:
+                Bundle bundle = new Bundle();
+                bundle.putString("thingNameKey", thingList.get(item.getGroupId()).getThingName());
+                bundle.putString("thingDescriptionKey", thingList.get(item.getGroupId()).getThingDescription());
+                bundle.putString("thingDiscoveryDateKey", thingList.get(item.getGroupId()).getThingDiscoveryDate());
+                bundle.putString("thingDiscoveryPlaceKey", thingList.get(item.getGroupId()).getThingDiscoveryPlace());
+                bundle.putString("thingPickupPointKey", thingList.get(item.getGroupId()).getThingPickupPoint());
+                bundle.putString("userNameKey", thingList.get(item.getGroupId()).getUserName());
+                bundle.putString("userPhoneKey", thingList.get(item.getGroupId()).getUserPhone());
+                bundle.putString("userEmailKey", thingList.get(item.getGroupId()).getUserEmail());
+                bundle.putString("oldImageUrl", thingList.get(item.getGroupId()).getThingImage());
+                bundle.putString("key", thingList.get(item.getGroupId()).getKey());
+
+                UpdateFragment updateFragment = new UpdateFragment();
+                updateFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction()
+                        .add(R.id.mainFragment, updateFragment)
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            case 2:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder
+                        .setTitle("Delete")
+                        .setMessage("Do you want to delete item?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Things");
+                                FirebaseStorage storage = FirebaseStorage.getInstance();
+                                StorageReference storageReference = storage.getReferenceFromUrl(thingList.get(item.getGroupId()).getThingImage());
+
+                                storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        reference.child(thingList.get(item.getGroupId()).getKey()).removeValue();
+                                        Toast.makeText(getActivity(), "Thing deleted", Toast.LENGTH_SHORT).show();
+                                        ThingsListFragment thingsListFragment = new ThingsListFragment();
+                                        getFragmentManager().beginTransaction()
+                                                .replace(R.id.mainFragment, thingsListFragment)
+                                                .commit();
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancel", null).create().show();
+                return true;
+            default:
+                super.onContextItemSelected(item);
+        }
+        return false;
+    }
 
 //    @Override
 //    public void fragmentMail(GridLayoutManager fragmentGridLayoutManager) { }

@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.smuzdev.takeforfree.R;
+import com.smuzdev.takeforfree.activities.MainActivity;
 
 public class DetailsFragment extends Fragment {
 
@@ -35,6 +36,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Details");
 
         thingName = view.findViewById(R.id.txtThingName);
         thingDescription = view.findViewById(R.id.txtThingDescription);
@@ -68,23 +70,34 @@ public class DetailsFragment extends Fragment {
                     .into(thingImage);
 
         }
+        return view;
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                startActivity(new Intent(getActivity(), UpdateActivity.class)
-//                        .putExtra("thingNameKey", thingName.getText().toString())
-//                        .putExtra("thingDescriptionKey", thingDescription.getText().toString())
-//                        .putExtra("thingDiscoveryDateKey", thingDiscoveryDate.getText().toString())
-//                        .putExtra("thingDiscoveryPlaceKey", thingDiscoveryPlace.getText().toString())
-//                        .putExtra("thingPickupPointKey", thingPickupPoint.getText().toString())
-//                        .putExtra("userNameKey", userName.getText().toString())
-//                        .putExtra("userPhoneKey", userPhone.getText().toString())
-//                        .putExtra("userEmailKey", userEmail.getText().toString())
-//                        .putExtra("oldImageUrl", imageUrl)
-//                        .putExtra("key", key)
-//                );
+                Bundle bundle = new Bundle();
+                bundle.putString("thingNameKey", thingName.getText().toString());
+                bundle.putString("thingDescriptionKey", thingDescription.getText().toString());
+                bundle.putString("thingDiscoveryDateKey", thingDiscoveryDate.getText().toString());
+                bundle.putString("thingDiscoveryPlaceKey", thingDiscoveryPlace.getText().toString());
+                bundle.putString("thingPickupPointKey", thingPickupPoint.getText().toString());
+                bundle.putString("userNameKey", userName.getText().toString());
+                bundle.putString("userPhoneKey", userPhone.getText().toString());
+                bundle.putString("userEmailKey", userEmail.getText().toString());
+                bundle.putString("oldImageUrl", imageUrl);
+                bundle.putString("key", key);
+
+                UpdateFragment updateFragment = new UpdateFragment();
+                updateFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction()
+                        .add(R.id.mainFragment, updateFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -114,18 +127,12 @@ public class DetailsFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Thing deleted", Toast.LENGTH_SHORT).show();
                                 ThingsListFragment thingsListFragment = new ThingsListFragment();
                                 getFragmentManager().beginTransaction()
-                                        .replace(R.id.authorizationFragment, thingsListFragment)
+                                        .replace(R.id.mainFragment, thingsListFragment)
                                         .commit();
-                                getActivity().finish();
-
-
                             }
                         })
                         .setNegativeButton("Cancel", null).create().show();
             }
         });
-
-        return view;
     }
-
 }

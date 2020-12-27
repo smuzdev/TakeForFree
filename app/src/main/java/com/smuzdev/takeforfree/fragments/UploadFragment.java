@@ -37,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.smuzdev.takeforfree.CustomTextWatcher;
 import com.smuzdev.takeforfree.R;
+import com.smuzdev.takeforfree.activities.MainActivity;
 import com.smuzdev.takeforfree.models.Thing;
 import com.smuzdev.takeforfree.models.User;
 
@@ -61,6 +62,7 @@ public class UploadFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Upload new thing");
 
         thingImage = view.findViewById(R.id.iv_thingImage);
         txt_thingName = view.findViewById(R.id.txtThingName);

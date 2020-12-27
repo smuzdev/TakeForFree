@@ -82,6 +82,7 @@ public class Adapter extends RecyclerView.Adapter<ThingViewHolder> {
                 fragmentManager = ((AppCompatActivity) mContext).getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .add(R.id.mainFragment, detailsFragment)
+                        .addToBackStack(null)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .commit();
             }

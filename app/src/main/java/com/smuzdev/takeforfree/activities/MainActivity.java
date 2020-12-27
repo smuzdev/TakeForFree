@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity /*implements Postman*/ {
         thingsListFragment = new ThingsListFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.mainFragment, thingsListFragment)
-                .addToBackStack(null)
                 .commit();
     }
 
