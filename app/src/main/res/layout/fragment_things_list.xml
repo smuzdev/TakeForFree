@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragments.ThingsListFragment"
-    android:id="@+id/drawer_layout">
+    tools:context=".fragments.ThingsListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:paddingTop="?attr/actionBarSize"
@@ -14,7 +13,6 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:layout_marginTop="16dp"
             android:id="@+id/txt_searchText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,8 +28,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
+            android:paddingBottom="?attr/actionBarSize"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_searchText"
             android:scrollbars="vertical"

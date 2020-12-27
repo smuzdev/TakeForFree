@@ -3,10 +3,12 @@ package com.smuzdev.takeforfree.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -42,6 +44,8 @@ import com.smuzdev.takeforfree.models.Thing;
 import com.smuzdev.takeforfree.models.User;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
@@ -51,8 +55,8 @@ public class UploadFragment extends Fragment {
     Uri uri;
     User user;
     FirebaseUser FB_user;
-    Button selectDateButton, selectImageButton;
-    TextView txt_thingDiscoveryDate;
+    Button selectImageButton;
+    String txt_thingDiscoveryDate;
     EditText txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace, txt_thingPickupPoint;
     ImageView thingImage;
     String imageUrl, userName, userEmail, userPhone;
@@ -67,10 +71,8 @@ public class UploadFragment extends Fragment {
         thingImage = view.findViewById(R.id.iv_thingImage);
         txt_thingName = view.findViewById(R.id.txtThingName);
         txt_thingDescription = view.findViewById(R.id.txtThingDescription);
-        txt_thingDiscoveryDate = view.findViewById(R.id.txtThingDiscoveryDate);
         txt_thingDiscoveryPlace = view.findViewById(R.id.txtThingDiscoveryPlace);
         txt_thingPickupPoint = view.findViewById(R.id.txtThingPickupPoint);
-        selectDateButton = view.findViewById(R.id.selectDateButton);
         selectImageButton = view.findViewById(R.id.select_image_button);
         uploadButton = view.findViewById(R.id.uploadButton);
         uploadButton.setEnabled(false);
@@ -82,13 +84,6 @@ public class UploadFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-//        selectDateButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DialogFragment datePicker = new DatePickerFragment();
-//                datePicker.show(getSupportFragmentManager(), "date picker");
-//            }
-//        });
 
         selectImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +151,7 @@ public class UploadFragment extends Fragment {
         progressDialog.show();
 
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -171,12 +167,17 @@ public class UploadFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void uploadThing() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        txt_thingDiscoveryDate = dtf.format(localDate);
 
         Thing thing = new Thing(
                 txt_thingName.getText().toString(),
                 txt_thingDescription.getText().toString(),
-                txt_thingDiscoveryDate.getText().toString(),
+                txt_thingDiscoveryDate,
                 txt_thingDiscoveryPlace.getText().toString(),
                 txt_thingPickupPoint.getText().toString(),
                 imageUrl,
@@ -207,17 +208,5 @@ public class UploadFragment extends Fragment {
             }
         });
     }
-
-//    @Override
-//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.YEAR, year);
-//        calendar.set(Calendar.MONTH, month);
-//        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String currentDateString = sdf.format(calendar.getTime());
-//        txt_thingDiscoveryDate.setText(currentDateString);
-//
-//    }
 
 }

@@ -48,8 +48,7 @@ public class UpdateFragment extends Fragment {
     Uri uri;
     EditText txt_thingName, txt_thingDescription, txt_thingDiscoveryPlace,
             txt_thingPickupPoint;
-    TextView txt_thingDiscoveryDate;
-    Button selectDateButton;
+    String txt_thingDiscoveryDate;
     String imageUrl;
     String key, oldImageUrl;
     DatabaseReference databaseReference;
@@ -67,29 +66,19 @@ public class UpdateFragment extends Fragment {
         thingImage = view.findViewById(R.id.iv_thingImage);
         txt_thingName = view.findViewById(R.id.txtThingName);
         txt_thingDescription = view.findViewById(R.id.txtThingDescription);
-        txt_thingDiscoveryDate = view.findViewById(R.id.txtThingDiscoveryDate);
         txt_thingDiscoveryPlace = view.findViewById(R.id.txtThingDiscoveryPlace);
         txt_thingPickupPoint = view.findViewById(R.id.txtThingPickupPoint);
-        selectDateButton = view.findViewById(R.id.selectDateButton);
         selectImageButton = view.findViewById(R.id.select_image_button);
         updateButton = view.findViewById(R.id.update_button);
         updateButton.setEnabled(false);
         updateButton.getBackground().setAlpha(128);
-
-//        selectDateButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DialogFragment datePicker = new DatePickerFragment();
-//                datePicker.show(getSupportFragmentManager(), "date picker");
-//            }
-//        });
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
 
             txt_thingName.setText(bundle.getString("thingNameKey"));
             txt_thingDescription.setText(bundle.getString("thingDescriptionKey"));
-            txt_thingDiscoveryDate.setText(bundle.getString("thingDiscoveryDateKey"));
+            txt_thingDiscoveryDate = bundle.getString("thingDiscoveryDateKey");
             txt_thingDiscoveryPlace.setText(bundle.getString("thingDiscoveryPlaceKey"));
             txt_thingPickupPoint.setText(bundle.getString("thingPickupPointKey"));
             userName = bundle.getString("userNameKey");
@@ -131,7 +120,7 @@ public class UpdateFragment extends Fragment {
             public void onClick(View v) {
                 thingName = txt_thingName.getText().toString().trim();
                 thingDescription = txt_thingDescription.getText().toString().trim();
-                thingDiscoveryDate = txt_thingDiscoveryDate.getText().toString().trim();
+                thingDiscoveryDate = txt_thingDiscoveryDate;
                 thingDiscoveryPlace = txt_thingDiscoveryPlace.getText().toString().trim();
                 thingPickupPoint = txt_thingPickupPoint.getText().toString().trim();
 
@@ -206,17 +195,5 @@ public class UpdateFragment extends Fragment {
         });
 
     }
-
-//    @Override
-//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.YEAR, year);
-//        calendar.set(Calendar.MONTH, month);
-//        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String currentDateString = sdf.format(calendar.getTime());
-//        txt_thingDiscoveryDate.setText(currentDateString);
-//
-//    }
 
 }
