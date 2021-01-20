@@ -82,13 +82,13 @@ public class MainActivity extends AppCompatActivity /*implements Postman*/ {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.show_list_view:
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        break;
-                    case R.id.show_table_view:
-                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-                        mRecyclerView.setLayoutManager(gridLayoutManager);
-                        break;
+//                    case R.id.show_list_view:
+//                        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//                        break;
+//                    case R.id.show_table_view:
+//                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+//                        mRecyclerView.setLayoutManager(gridLayoutManager);
+//                        break;
                     case R.id.upload_thing:
                         UploadFragment uploadFragment = new UploadFragment();
                         getSupportFragmentManager().beginTransaction()

@@ -56,6 +56,7 @@ public class UpdateFragment extends Fragment {
     String thingName, thingDescription, thingPublicationDate, thingUseDuration,
             thingPickupPoint, userName, userPhone, userEmail;
     MaterialButton updateButton, selectImageButton;
+    Boolean isNewImage = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,7 +138,11 @@ public class UpdateFragment extends Fragment {
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!uriTask.isComplete()) ;
                         Uri urlImage = uriTask.getResult();
-                        imageUrl = urlImage.toString();
+                        if (isNewImage) {
+                            imageUrl = urlImage.toString();
+                        } else {
+                            imageUrl = oldImageUrl;
+                        }
                         uploadThing();
                         progressDialog.dismiss();
                     }
@@ -160,6 +165,7 @@ public class UpdateFragment extends Fragment {
 
             uri = data.getData();
             thingImage.setImageURI(uri);
+            isNewImage = true;
 
         } else Toast.makeText(getActivity(), "You haven't picked image", Toast.LENGTH_LONG).show();
     }
@@ -182,8 +188,10 @@ public class UpdateFragment extends Fragment {
         databaseReference.child(thing.getThingName()).setValue(thing).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                //  if (!isNewImage) {
                 StorageReference storageReferenceNew = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageUrl);
                 storageReferenceNew.delete();
+                //  }
                 if (task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Data Updated", Toast.LENGTH_SHORT).show();
                     ThingsListFragment thingsListFragment = new ThingsListFragment();
